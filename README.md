@@ -22,6 +22,8 @@ A wrapper to identify k-mers and perform machine learning on the identified k-me
 ### FOR NORMAL USE, follow these steps:
 ```
    0. (put your .gff3 & genome file in ~/code_intergration/gffandgenome) AND (put your TP/TN data in ~/code_intergration/data/Kmer/TPTN)
+   # You can follow README in gffandgenome folder to download Arabidopsis thaliana genome fasta and gff3 file for testing.
+
    1. change your direction to 'code_intergration' file (cd ~/code_intergration)
    2. source [your own conda.sh(~/miniconda3/etc/profile.d/conda.sh)]     **if you don't have one, please inatall miniconda**
    3. conda activate python_Kmer
