@@ -1,0 +1,59 @@
+add_multifreq           Add multi-letter information to a motif.
+ArabidopsisMotif        Arabidopsis motif in 'universalmotif' format.
+ArabidopsisPromoters    Arabidopsis promoters as a 'DNAStringSet'.
+compare_motifs          Compare motifs.
+convert_motifs          Convert motif class.
+convert_type            Convert universalmotif type.
+create_motif            Create a motif.
+create_sequences        Create random sequences.
+enrich_motifs           Enrich for input motifs in a set of sequences.
+examplemotif            Example motif in 'universalmotif' format.
+examplemotif2           Another example motif in 'universalmotif'
+                        format.
+filter_motifs           Filter a list of motifs.
+fontDFroboto            Polygon coordinates for plotting letters.
+get_bkg                 Calculate sequence background.
+JASPAR2018_CORE_DBSCORES
+                        JASPAR2018 CORE database scores
+make_DBscores           Create P-value databases.
+merge_motifs            Merge motifs.
+merge_similar           Identify and merge similar motifs within a
+                        collection of motifs (or simply cluster
+                        motifs).
+motif_peaks             Look for overrepresented motif position peaks
+                        in a set of sequences.
+motif_pvalue            Motif P-value and scoring utility
+motif_rc                Get the reverse complement of a DNA or RNA
+                        motif.
+motif_tree              Generate 'ggplot2' motif trees with 'ggtree'.
+read_cisbp              Import CIS-BP motifs.
+read_homer              Import HOMER motifs.
+read_jaspar             Import JASPAR motifs.
+read_matrix             Import motifs from raw matrices.
+read_meme               Import MEME motifs.
+read_motifs             Import universalmotif formatted motifs.
+read_transfac           Import TRANSFAC motifs.
+read_uniprobe           Import UNIPROBE motifs.
+run_meme                Run MEME from within R.
+sample_sites            Generate binding sites from a motif.
+scan_sequences          Scan sequences for matches to input motifs.
+sequence_complexity     Calculate sequence complexity.
+shuffle_motifs          Shuffle motifs by column.
+shuffle_sequences       Shuffle input sequences.
+switch_alph             Switch between DNA and RNA alphabets.
+tidy-motifs             Tidy manipulation of motifs.
+trim_motifs             Trim motifs.
+universalmotif-class    universalmotif: Motif class.
+universalmotif-pkg      universalmotif: Import, Modify and Export
+                        Motifs with R
+utilities               Utility functions.
+utils-motif             Motif-related utility functions.
+utils-sequence          Sequence-related utility functions.
+view_logo               Plot logos from numeric matrices.
+view_motifs             Plot motif logos.
+write_homer             Export motifs in HOMER format.
+write_jaspar            Export motifs in JASPAR format.
+write_matrix            Export motifs as raw matrices.
+write_meme              Export motifs in MEME format.
+write_motifs            Export motifs in universalmotif format.
+write_transfac          Export motifs in TRANSFAC format.

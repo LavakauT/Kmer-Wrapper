@@ -1,0 +1,1120 @@
+CHANGES IN VERSION 1.18.1
+-------------------------
+
+BUG FIXES
+
+  o Fixed compilation flags causing errors on linux.
+
+CHANGES IN VERSION 1.18.0
+-------------------------
+
+NEW FEATURES
+
+  o read_meme(readsites.meta.tidy): New option to tidy the output of the
+    readsites.meta option into a single data.frame.
+
+MINOR CHANGES
+
+  o create_motif(): More robust argument checking.
+
+  o The rowMeans, colMeans, rowSums, and colSums generics are now imported
+    from the MatrixGenerics package instead of BiocGenerics.
+
+BUG FIXES
+
+  o Clean up output of argument checks internal to exported functions.
+
+  o Delete a reference in IntroductionToSequenceMotifs vignette to a
+    non-exported function.
+
+  o Delete outdated in MotifManipulation vignette regarding convert_motifs
+    function.
+
+CHANGES IN VERSION 1.16.0
+-------------------------
+
+NEW FEATURES
+
+    o write_transfac(name.tag, altname.tag): New arguments to manually set the
+      name and altname tags in the final TRANSFAC motifs.
+
+MINOR CHANGES
+
+    o write_matrix(positions): Partial argument matching allowed.
+
+    o motif_tree(): Silence messages from ggtree.
+
+BUG FIXES
+
+    o create_motif(): Don't ignore the nsites argument when generating random
+      motifs.
+
+    o read_meme(): Correctly parse background if lines are prepended with a
+      space.
+
+    o convert_type(pseudocount): Change the pseudocount within the motif when
+      performing a type conversion and the option is set.
+
+CHANGES IN VERSION 1.14.1
+-------------------------
+
+BUG FIXES
+
+    o read_meme(): Handle motif files with custom alphabets and no 'END'
+      line in alphabet definition. Thanks to @manoloff (#24) for the bug
+      report, and Spencer Nystrom for the fix (#25).
+
+CHANGES IN VERSION 1.14.0
+-------------------------
+
+NEW FEATURES
+
+    o enrich_motifs(mode, pseudocount): Choose whether to count motif hits
+      once per sequence, and whether to add a pseudocount for P-value
+      calculation.
+
+    o New function, meme_alph(): Create MEME custom alphabet definition files.
+
+    o merge_similar(return.clusters): Return the clusters without merging.
+
+    o convert_motifs(): MotifDb-MotifList now available as an output format.
+
+MINOR CHANGES
+
+    o enrich_motifs(): RC argument now defaults to TRUE, increased max
+      significance values, no.overlaps now defaults to TRUE. Additional
+      columns showing the motif consensus sequence and percent of sequences
+      with hits are now included.
+
+    o scan_sequences(RC): Only print a warning if RC=TRUE for non-DNA/RNA
+      motifs.
+
+    o Reduced the size of the message when a pseudocount is added to motifs.
+
+CHANGES IN VERSION 1.12.4
+-------------------------
+
+BUG FIXES
+
+    o convert_motifs(): Properly handle TFBSTools class motifs with '*' as
+      their strand. This was achieved by making the universalmotif object
+      creator tolerant to using '*' as a user input. Thanks to David Oliver
+      for the bug report (#22).
+
+CHANGES IN VERSION 1.12.3
+-------------------------
+
+BUG FIXES
+
+    o scan_sequences(): Previously this function did not account for the fact
+      that duplicate sequence names are allowed within XStringSet objects. To
+      better keep track of which sequence hits are associated with, an
+      additional sequence.i column has been added which keeps track of the
+      sequence number. This change also fixes a knock-on issue with
+      enrich_motifs(), where sequences with duplicate names did not contribute
+      to the count of sequences containing hits. Thanks to Alexandre Blais for
+      mentioning this issue.
+
+CHANGES IN VERSION 1.12.2
+-------------------------
+
+BUG FIXES
+
+    o shuffle_sequences(..., method="markov"): Previously the returning
+      sequences were longer by 1.
+
+CHANGES IN VERSION 1.12.1
+-------------------------
+
+BUG FIXES
+
+    o DNA ambiguity letters can be used with create_motif() when
+      alphabet="DNA" is specified. Previously ambiguity letters only worked
+      when alphabet was not specified.
+
+CHANGES IN VERSION 1.12.0
+-------------------------
+
+NEW FEATURES
+
+    o New function, sequence_complexity(): Using either the Wootton-Federhen,
+      Trifonov, or DUST algorithms, calculate sequence complexity in sliding
+      windows. A version for small arbitrary strings is also provided:
+      calc_complexity().
+
+    o New function, mask_ranges(): Similarly to mask_seqs(), mask specific
+      positions in a XStringSet object by replacing the letters with a specific
+      filler character.
+
+    o New function, motif_range(): Get the min/max range of possible logodds
+      scores for a motif.
+
+    o New function, calc_windows(): Utility function for calculating
+      coordinates for sliding windows.
+
+    o New function, window_string(): Utility function for retrieving sliding
+      windows in a string.
+
+    o New function, slide_fun(): Utility function which wraps window_string()
+      and vapply() together.
+
+    o motif_pvalue(method): P-values and scores can now be calculated
+      dynamically instead of exhaustively, substantially increasing both speed
+      and accuracy for bigger jobs. The previous exhaustive method can still be
+      used however, as the dynamic method does not allow non-finite values and
+      thus must be pseudocount-adjusted.
+
+    o scan_sequences(calc.pvals, calc.qvals, motif_pvalue.method,
+      calc.qvals.method): The calc.pvals argument defaults to TRUE.
+      The P-value calculation method now defaults to dynamic P-values (the
+      previous method was an exhaustive calculation), though this can be
+      changed via motif_pvalue.method. Additionally, adjusted P-values can be
+      calculated as either BH, FDR or a Bonferroni-adjusted P-value. More
+      details can be found in the Sequence Searches vignette.
+
+    o write_homer(threshold, threshold.type): Finer control over the final
+      motif logodds threshold included with the written motif is now
+      available, using the style of argument parsing from scan_sequences().
+      The previous logodds_threshold argument is now deprecated and set to
+      NULL, but if set (e.g. an older script is being re-run) then the old
+      behaviour of write_homer() will be used.
+
+MINOR CHANGES
+
+    o New global option, options(pseudocount.warning): Disable the message
+      printed when a motif is pseudocount-adjusted.
+
+    o Slight performance gains in get_bkg() window code.
+
+    o motif_pvalue(): Clarify that, indeed, background probabilities are taken
+      into account when calculating P-values from score inputs. The background
+      adjustment takes place during the initial conversion to PWM.
+
+    o motif_pvalue(): When bkg.probs are provided, use those when converting to
+      a PWM.
+
+    o scan_sequences(): The default threshold is now 0.0001 (using
+      threshold.type = "pvalue").
+
+    o The axis text in view_motifs() is now black instead of grey.
+
+    o create_motif(): When a named background vector is provided, it is
+      sorted according to the alphabet characters.
+
+    o scan_sequences(): Check that the sequences aren't shorter than the
+      motifs.
+
+    o print.universalmotif_df: Changed warning message when subsetting to an
+      incomplete universalmotif_df object. Also added a way to turn off
+      informative messages/warnings via the boolean universalmotif_df.warning
+      global option.
+
+    o Miscellaneous changes and additions to the vignettes and various
+      function manual pages.
+
+
+CHANGES IN VERSION 1.10.2
+-------------------------
+
+BUG FIXES
+
+    o read_homer() now correct parses enrichment P-value and logodds score.
+
+CHANGES IN VERSION 1.10.1
+-------------------------
+
+BUG FIXES
+
+    o Restore temporarily disabled ggtree(layout="daylight") example in the
+      MotifComparisonAndPvalues.Rmd vignette, as tidytree is now patched.
+
+    o Fixed some awkwardness in view_motifs() panel spacing and title
+      justification.
+
+CHANGES IN VERSION 1.10.0
+-------------------------
+
+NEW FEATURES
+
+    o A new data structure, universalmotif_df, has been made available. This
+      allows for motifs to be manipulated as one would a data.frame object.
+      The to_df() function is used to generate this stucture from lists of
+      motifs. The update_motifs() function is used to apply changes to the
+      actual motifs, and to_list() returns the actual motifs. Note that this is
+      only meant as an option for more conveniently manipulating motif slots of
+      multiple motifs simultaneously before returning them to a list; the
+      universalmotif_df structure cannot be used in the various universalmotif
+      functions. Additionally, requires_update() can be used to ascertain
+      whether motifs are out of date in a universalmotif_df object. Many thanks
+      to @snystrom for discussions and significant contributions.
+
+    o view_motifs(): the universalmotif package now relies entirely on its
+      own code to generate the polygon data used by ggplot2 to plot motifs,
+      meaning the ggseqlogo import has been dropped. A number of new options
+      are now available, including plotting multifreq logos and finer control
+      over letter spacing. An effort has been made to ensure that the default
+      behaviour of the function be unchanged from previous versions. This
+      change should also allow for easier fixing of bugs and flexibility for
+      future additions or changes.
+
+    o New function, merge_similar(): identify and merge similar motifs in a
+      list of motifs. Essentially, a wrapper around compare_motifs(), hclust(),
+      cutree(), and merge_motifs().
+
+    o New function, view_logo(): plot logos with matrix input instead of motif
+      object input.  Arbitrary column heights and multi-character letters are
+      allowed.
+
+    o New function, average_ic(): calculate the average information content
+      for a list of motifs.
+
+    o trim_motifs(..., trim.from): trim from both directions or just one.
+
+    o shuffle_sequences(..., window, window.size, window.overlap): shuffle
+      sequences iteratively in windows of specified size.
+
+    o scan_sequences(..., return.granges): optionally return a GRanges object.
+
+    o scan_sequences(..., no.overlaps, no.overlaps.by.strand,
+      no.overlaps.strat): remove overlapping hits after scanning, preventing
+      overlapping hits by the same motifs from being returned. This can
+      optionally be done per strand. Either the first hit or the highest
+      scoring hit can be preserved per set of overlapping hits. These new
+      arguments can also be used in enrich_motifs().
+
+    o scan_sequences(..., respect.strand): whether to scan the sequence strands
+      according to the motif strand slot. Only applicable for DNA/RNA motifs.
+      This option is also available in enrich_motifs().
+
+MINOR CHANGES
+
+    o Some additions and clean-up to documentation and vignettes.
+
+    o Support for MotIV-pwm2 formatted motifs has been dropped, as the package
+      is no longer a part of the current Bioconductor version.
+
+    o read_matrix()/write_matrix(): the sep argument can now be NULL (no
+      seperators.)
+
+    o The Rdpack dependency has been dropped.
+
+    o merge_motifs(): single-motif input now simply returns the motif instead
+      of throwing an error.
+
+    o view_motifs(..., dedup.names): now TRUE by default. Furthermore, the
+      make.unique() function is now used to deduplicate names.
+
+    o compare_motifs(..., method): the default comparison method has been
+      changed back to PCC.
+
+BUG FIXES
+
+    o Using create_motif() with a single character no longer throws an error.
+
+    o Generating random motifs with filled multifreq slots now works.
+
+CHANGES IN VERSION 1.8.5
+------------------------
+
+BUG FIXES
+
+   o Found a typo in the consensus to PPM calculation for the DNA ambiguity
+     letter Y which resulted in incorrect PPM values.
+
+CHANGES IN VERSION 1.8.4
+------------------------
+
+BUG FIXES
+
+   o Fixed incorrect handling of the -alph parameter in run_meme() (reported
+      by @Irenexzwen).
+
+CHANGES IN VERSION 1.8.3
+------------------------
+
+BUG FIXES
+
+    o Fixed improper handling of MEME version string in read_meme().
+
+CHANGES IN VERSION 1.8.2
+------------------------
+
+BUG FIXES
+
+    o Increase compliance with MEME motif format: motif files with missing
+      alphabets/strand/bkg are now allowed and  will be assumed to be
+      DNA/+/uniform frequencies. A check for the MEME version is performed,
+      though only a warning is given if not found.
+
+    o Fixed typo in run_meme() missing dependency error message.
+
+CHANGES IN VERSION 1.8.1
+------------------------
+
+BUG FIXES
+
+    o Fixed error when scan_sequences() is used with both RC = TRUE and
+      calc.pvals = TRUE.
+
+    o Fixed motif.i column in scan_sequences() results not reporting correctly
+      when RC = TRUE.
+
+    o Fixed memory access bug in motif_pvalue() when k was set to a value
+      resulting in three or more submotifs.
+
+CHANGES IN VERSION 1.8.0
+------------------------
+
+NEW FEATURES
+
+    o scan_sequences()/enrich_motifs() can now be used to scan/enrich for
+      gapped motifs. A new section has been added to the SequenceSearches.Rmd
+      vignette.
+
+    o scan_sequences(..., use.gaps), enrich_motifs(..., use.gaps): ignore motif
+      gap information.
+
+    o read_meme(), write_meme(): now fully support custom alphabets.
+
+    o prob_match(), prob_match_bkg(): calculate the probability of a motif
+      match based on background frequencies of the motif object or provided
+      values, respectively.
+
+    o enrich_motifs(), get_matches(), get_scores(), motif_pvalue(),
+      motif_score(), scan_sequences(), score_match(): new allow.nonfinite
+      parameter, allowing for the functions to work even if non-finite values
+      are present in the motif PWM.
+
+    o read_matrix(..., comment): allows for comments to be ignored in motif
+      files.
+
+    o write_matrix(..., digits): control the number of digits to use for
+      writing motif positions.
+
+    o New mask_seqs() utility function: inject hard masks into sequences.
+
+    o scan_sequences(..., warn.NA), enrich_motifs(..., warn.NA): new option
+      which can disable warnings from non-standard letters being detected
+      in the input sequences.
+
+    o get_bkg(..., window, window.size, window.overlap): new options for
+      calculating sequence background in windows.
+
+    o get_bkg(..., merge.res): new option to return background information for
+      individual sequences.
+
+    o scan_sequences(..., calc.pvals): new option to calculate P-values for
+      sequence hits. This is merely automating using the results from
+      scan_sequences() to calculate P-values manually with motif_pvalue().
+
+    o view_motifs(..., show.positions, show.positions.once, show.names): new
+      options for customizing the look of plotted motifs.
+
+MINOR CHANGES
+
+    o read_matrix(..., positions): added partial argument matching.
+
+    o create_sequences(), shuffle_sequences(), motif_pvalue(): the c++ random
+      engine has been changed from std::default_random_engine to std::mt19937.
+      This should allow for the same rng.seed value to result in the same
+      output regardless of OS.
+
+    o score_match() has been vectorized (alongside new prob_match() function).
+
+    o The ape and ggtree packages are now no longer imported and must be
+      installed seperately in order to use motif_tree().
+
+    o The processx package is no longer imported and must be installed
+      seperately in order to use run_meme().
+
+    o The pseudocount slot is now shown when universalmotif class objects are
+      printed.
+
+    o get_bkg(): the list.out and as.prob options have been disabled. To
+      simplify the function, the only possible output (exception: if to.meme is
+      not NULL) is a DataFrame showing both counts and probabilities.
+
+    o Changed the default look of motifs plotted by view_motifs().
+
+    o General documentation cleanup.
+
+BUG FIXES
+
+    o Changing motif backgrounds with `[<-` will now make sure to set correct
+      vector names.
+
+    o get_bkg() will now correctly ignore non-standard letters and letters
+      missing from the provided alphabet during counting.
+
+CHANGES IN VERSION 1.6.4
+------------------------
+
+BUG FIXES
+
+    o cbind(): do not ignore the pseudocount slot.
+
+    o Fixed typo in IntroductionToSequenceMotifs.Rmd.
+
+    o Fixed U() function in IntroductionToSequenceMotifs.Rmd, no longer returns
+      NA values if 0s are present.
+
+    o read_cisbp(): no parsing errors for motifs with missing/partial header
+      info.
+
+CHANGES IN VERSION 1.6.3
+------------------------
+
+BUG FIXES
+
+    o scan_sequences(): commented out WIP code for scanning gapped motifs.
+
+CHANGES IN VERSION 1.6.2
+------------------------
+
+BUG FIXES
+
+    o motif_tree(): 'daylight' layout is no longer disabled.
+
+CHANGES IN VERSION 1.6.1
+------------------------
+
+BUG FIXES
+
+    o summarise_motif(): properly retrieves altname slot. Contribution from
+      Spencer Nystrom (https://github.com/bjmt/universalmotif/pull/9).
+
+    o read_meme(): for LIKE type alphabets, make sure PROTEIN-LIKE is
+      understood as being AA.
+
+CHANGES IN VERSION 1.6.0
+------------------------
+
+NEW FEATURES
+
+    o log_string_pval(): small utility function to obtain the log of
+      string-formatted p-values (such as those often carried in
+      MEME-formatted motifs which are smaller than R's double.xmin limit).
+      Likely only a temporary solution.
+
+    o view_motifs(..., return.raw) option: instead of returning a plot
+      type object, return the aligned motif matrices.
+
+    o view_motifs(..., dedup.names) option: allows plotting of motifs with
+      duplicated names by appending a unique string.
+
+    o merge_motifs(..., new.name) option: assign a name to the new merged motif
+      instead of collapsing the names of the merged motifs together.
+
+    o round_motif() utility: round down very low letter-position scores to
+      zero.
+
+MINOR CHANGES
+
+    o Removed most previously deprecated function arguments.
+
+    o Make sure view_motifs(..., use.type = "ICM") properly sets ylim.
+
+    o create_motif(): single motif positions can now be created.
+
+    o create_motif(), character input: nsites slot is left empty is input is
+      a single string. It is still filled if the input consists of multiple
+      strings.
+
+    o merge_motifs(): ALLR/ALLR_LL/KL/IS methods no longer add pseudocounts to
+      the motifs. Instead, pseudocounts are added to temporary internal copies
+      which are used for comparison and alignment. The original un-modified
+      matrices are then combined.
+
+    o read_meme(): now supports DNA-LIKE, RNA-LIKE, and AA-LIKE alphabets,
+      though these will be treated as regular DNA, RNA, and AA alphabets,
+      respectively. Contribution from Spencer Nystrom
+      (https://github.com/bjmt/universalmotif/pull/7).
+
+    o Some cleanup to documentation and vignettes.
+
+    o General code cleanup.
+
+BUG FIXES
+
+    o write_meme() now includes altname slot if filled. Contribution from
+      Spencer Nystrom (https://github.com/bjmt/universalmotif/pull/5).
+
+    o write_meme() checks for and removes any spaces/equal signs in motif
+      names/altnames.
+
+    o view_motifs(..., use.type = "ICM"): check for zero IC motifs, as these
+      cannot be plotted by ggseqlogo.
+
+CHANGES IN VERSION 1.4.10
+-------------------------
+
+BUG FIXES
+
+    o Updated the warning from v1.4.9 to make users aware that the daylight
+      layout will be permanently disabled for Bioconductor 3.10.
+
+CHANGES IN VERSION 1.4.9
+------------------------
+
+BUG FIXES
+
+  o Temporarily disabling the 'daylight' layout for motif_tree() to get
+    around a new bug.
+
+CHANGES IN VERSION 1.4.8
+------------------------
+
+BUG FIXES
+
+    o Fixed buffer overflow error in motif_peaks().
+
+CHANGES IN VERSION 1.4.7
+------------------------
+
+BUG FIXES
+
+    o Fixed dangling references in compare_motifs_helper.cpp and
+      utils-exported.cpp.
+
+    o Trying to subset a motif to a single column no longer throws an error.
+
+CHANGES IN VERSION 1.4.6
+------------------------
+
+BUG FIXES
+
+    o scan_sequences(): will now actually emit a warning when non-standard
+      letters are detected.
+
+CHANGES IN VERSION 1.4.5
+------------------------
+
+BUG FIXES
+
+    o run_meme(): don't try and delete R's tempdir.
+
+CHANGES IN VERSION 1.4.4
+------------------------
+
+BUG FIXES
+
+    o Minor fix to how args are fed to processx::run() in run_meme().
+
+CHANGES IN VERSION 1.4.3
+------------------------
+
+BUG FIXES
+
+    o Suppress message output from library(TFBSTools) call in
+      MotifManipulation.pdf vignette preamble code.
+
+CHANGES IN VERSION 1.4.2
+------------------------
+
+BUG FIXES
+
+    o Stopped using BiocStyle, as a current bug was preventing the package from
+      building successfully.
+
+CHANGES IN VERSION 1.4.1
+------------------------
+
+BUG FIXES
+
+    o When using create_motif() with an AAStringSet object, amino acid letters
+      will now be properly sorted and match the motif rows.
+
+CHANGES IN VERSION 1.4.0
+------------------------
+
+NEW FEATURES
+
+    o scan_sequences(..., threshold.type) option: 'logodds.abs'. Allows
+      the exact threshold scores to be provided.
+
+    o compare_motifs() option: 'min.position.ic'. Prevent low-IC positions in
+      an alignment from contributing to the final alignment score.
+
+    o compare_motifs() option: 'score.strat'. Instruct the function how to deal
+      with individual column scores in an alignment. This is also replaced
+      the old way of choosing between sum and mean via prepending an 'M' to the
+      metric name. Strategies for combining column scores include: sum,
+      arithmetic mean, geometric mean, median, Fisher Z-transform, and weighted
+      means.
+
+    o Motif comparison metrics: average log-likelihood ratio, squared Euclidean
+      distance, Hellinger distance, Bhattacharyya coefficient, Manhattan
+      distance, lower limit average log-likelihood ratio, weighted Euclidean
+      distance, weighted Pearson correlation coefficient.
+
+    o compare_columns() utility: Compare two 1d numeric vectors using the
+      comparison metrics from compare_motifs().
+
+    o compare_motifs() option: 'output.report'. Generate an output report when
+      'compare.to' is provided, showing motif alignments of top matches.
+
+    o get_scores() utility: Extract all possible scores from a motif.
+
+    o filter_motifs(): Filter using the 'extrainfo' slot.
+
+    o MotifComparisonAndPvalues.pdf vignette: the comparisons and P-values
+      sections have been moved from AdvancedUsage.pdf to their own vignette.
+      Higher order motifs, enrichment and run_meme() usage sections have been
+      moved to SequenceSearches.pdf.
+
+MINOR CHANGES
+
+    o Removed 'random' shuffling method.
+
+    o Using RcppThread instead of BiocParallel in several functions:
+      compare_motifs(), create_sequences(), get_bkg(), motif_pvalue(),
+      scan_sequences(), shuffle_sequences(). This means parallelization can
+      occur within C++ code which is much faster than having to jump between
+      R and C++. Currently motif_peaks(), read_motifs() and write_motifs()
+      are the only remaining functions which offer optional BiocParallel
+      usage.
+
+    o Many performance improvements to functions relying on internal C++ code.
+      Several internal R functions have been replaced with C++ versions.
+
+    o Changed behaviour of make_DBscores() and motif comparison P-values.
+      Re-calculated internal P-value databases.
+
+    o For merge_motifs(..., use.type): now only accepts 'PPM'.
+
+    o When comparing all motifs to all motifs with any method in
+      compare_motifs(), the diagonal entries now properly show the max/min
+      possible similarity/distance scores.
+
+    o New internal merge_motifs() implementation. This also fixes a previous bug
+      with incorrect PPM averaging.
+
+    o read_homer(): the logodds score is converted to a P-value.
+
+    o motif_pvalue(): New score calculator. Exact scores are still calculated
+      the same (but with a faster C++ function), but approximate scores are
+      now calculated by randomly generating score distributions from size 'k'
+      motif score blocks.
+
+    o motif_pvalue(): Added a safety check when trying to use this function
+      with large motifs. Will throw a warning when nrow(matrix)^k > 1e8 and
+      reduce k accordingly before continuing.
+
+    o Adjusted P-value calculation in motif_peaks() to not display Pval = 0
+      so easily by instead estimating a normal distribution from random peaks.
+
+    o convert_type(): make sure not to leave any zeros in bkg vector when a
+      pseudocount greater than zero is used.
+
+    o enrich_motifs(): split up 'hits' and 'positional' resuts into their own
+      data.frames.
+
+    o Replaced several instances of cat() with message() for printing progress
+      updates.
+
+    o Positional tests have been removed from enrich_motifs(). See
+      motif_peaks() for testing motif-sequence positional preferences.
+
+    o In read_meme(): E-values are now additionally stored in the extrainfo
+      slot. This is to preserve E-values smaller than the R double precision
+      limit.
+
+    o In read_transfac(): Matrix values are rounded, to prevent errors when
+      reading in matrices with non-integers.
+
+    o Update JASPAR2018_CORE_DBSCORES with new compare_motifs() methods and
+      params.
+
+    o universalmotif print() method now returns the object invisibly,
+      instead of NULL.
+
+BUG FIXES
+
+    o read_meme() will now properly parse background letter frequencies which
+      span more than one line.
+
+    o convert_motifs() will not error-out when trying to convert a PFMatrix
+      with a family character vector longer than one.
+
+    o Fixed P-value calculation when importing HOMER motifs. Peviously it
+      would simply assume the log threshold value was the P-value. Now
+      motif_pvalue() is used to properly calculate a P-value.
+
+CHANGES IN VERSION 1.2.1
+------------------------
+
+BUG FIXES
+
+    o Mispelled variable in enrich_motifs().
+
+CHANGES IN VERSION 1.2.0
+------------------------
+
+NEW FEATURES
+
+    o New motif_peaks() function: test for significantly overrepresented peaks
+      of motif sites in a set of sequences.
+
+    o New get_bkg() function: calculate background frequencies of sequence
+      alphabets, including higher order backgrounds. Works for any sequence
+      alphabet. Can also create MEME background format files.
+
+    o read_meme() has a new option, readites.meta, which allows for reading
+      individual motif site positions and P-values, as well as combined
+      sequence P-values.
+
+    o shuffle_sequences(..., method = "markov") works for any set of
+      characters instead of just DNA/RNA.
+
+    o shuffle_sequences(): new shuffling method, 'euler'. This allows for k>1
+      shuffling that preserves exact letter counts, as opposed to 'markov'.
+      This method is set as the new default shuffling method.
+
+    o create_sequences() has a new option "freqs" which allows for generating
+      sequence from higher order backgrounds and any sequence alphabet
+      (options "monofreqs", "difreqs" and "trifreqs" are now deprecated).
+
+    o universalmotif objects can now hold onto higher order backgrounds.
+
+    o motif_pvalue() with use.freq > 1 can calculate P-values from
+      provided higher-order backgrounds, instead of assuming a uniform
+      background.
+
+    o add_multifreq() adds corresponding higher order background probabilities
+      to motifs.
+
+    o New get_klets() utility function: generate all possible k-lets for any
+      set of characters.
+
+    o New score_match() utility function: score a match for a particular motif.
+
+    o New get_matches() utility function: get all possible motif matches above
+      a certain score.
+
+    o New count_klets() utility function: count all k-lets for any string
+      of characters.
+
+    o New motif_score() utility function: calculate motif score from input
+      thresholds.
+
+    o New shuffle_string() utility function: shuffle a string of character
+      using one of three methods: euler, linear, and markov.
+
+    o The native write_motifs()/read_motifs() universalmotif format is now
+      YAML based. Motifs written before v1.2.0 can still be read by
+      read_motifs().
+
+MINOR CHANGES
+
+    o Increased input security for character type parameters throughout.
+
+    o Expanded motif_pvalue(), scan_sequences(), motif_tree() examples
+      sections.
+
+    o New vignette sections for motif_peaks() and get_bkg() added to
+      SequenceSearches.Rmd.
+
+    o Various vignette tweaks.
+
+    o Fixed various spelling mistakes throughout, added Language field to
+      Description, and added spell check to tests.
+
+    o Documentation for the "random" shuffling method has been removed and a
+      warning is shown when used to tell the user that it will be removed in
+      the next minor update.
+
+    o Generally increased test coverage.
+
+    o The "k=1", "linear" and "markov" shuffling methods are much faster.
+
+    o create_sequences() for higher order backgrounds is much faster.
+
+    o Faster add_multifreqs(): slight improvement for DNA motifs, big
+      improvement for non-DNA motifs.
+
+    o sample_sites() has been rewritten for use.freq > 1: the probability of
+      each letter in the site is now dependent on the previous letters (also
+      faster and more memory efficient for any use.freq).
+
+    o Improvement to calculating motif scores from p-value input: no
+      longer guesses different scores, instead estimating a normal distribution
+      of scores. This new approach is much, much faster and more memory
+      efficient. It does however assume a uniform background.
+
+    o The "score.pct" column in scan_sequences() results now represents the
+      percent score based on the total possible score, not just the score
+      between zero and the max possible score.
+
+    o summarise_motifs() is much faster.
+
+    o Objects in data/ are saved using serialization format version 3.
+
+    o convert_motifs(motif, class = "universalmotif-universalmotif"): performs
+      a validObject() check if "motif" is a universalmotif object.
+
+    o The show() method for universalmotif objects performs a validObject()
+      check first.
+
+    o motif_rc() has a new option "ignore.alphabet", used to turn on or off the
+      alphabet check (checks for DNA/RNA motif).
+
+    o Added "overwrite" and "append" options to write_*() functions.
+
+    o enrich_motifs(..., return.scan.results = FALSE): uses a slimmed down
+      version of scan_sequences() which skips construction of the complete
+      results data.frame, saving a tiny bit of time on large jobs.
+
+    o compare_motifs() now includes log P-values. This way comparisons can
+      still be properly ranked even if their P-values are below the machine
+      limit.
+
+    o convert_motifs() from MotifList (MotifDb) carries over dataSource.
+
+    o If a MEME motif has two names, the second will be assigned as "altname"
+      by read_meme().
+
+    o Utilities documentation has been split into two: ?utils-motif and
+      ?utils-sequence.
+
+BUG FIXES
+
+    o Fixed IC score calculation from character input in create_motif().
+
+    o The internal DNA consensus letter calculation previously did not assign
+      ambiguous letters when one PPM position was >0.5 and another was >0.25.
+      This was unintended behaviour and will now output the proper ambigous
+      DNA letter.
+
+CHANGES IN VERSION 1.0.22
+-------------------------
+
+BUG FIXES
+
+    o Fixed incorrect RcppExports code introduced in last patch.
+
+CHANGES IN VERSION 1.0.21
+-------------------------
+
+BUG FIXES
+
+    o Fixed an incorrect citation in motif_pvalue().
+
+CHANGES IN VERSION 1.0.20
+-------------------------
+
+BUG FIXES
+
+    o Fixed a bug introduced in previous patches where create_sequences()
+      fails with alphabet = "RNA" and missing difreq/trifreq.
+
+CHANGES IN VERSION 1.0.19
+-------------------------
+
+BUG FIXES
+
+    o Fixed create_sequences(alphabet = "RNA") when providing difreq/trifreq.
+
+CHANGES IN VERSION 1.0.18
+-------------------------
+
+BUG FIXES
+
+    o Fixed alphabet letters being stripped from difreq and trifreq params in
+      create_sequences().
+
+    o Fixed an incorrect call to sample() when using create_sequences() with
+      difreq.
+
+CHANGES IN VERSION 1.0.17
+-------------------------
+
+BUG FIXES
+
+    o Custom motif alphabets are properly sorted in the alphabet slot of motifs.
+
+    o scan_sequences() properly matches custom sequence and motif alphabets.
+
+CHANGES IN VERSION 1.0.16
+-------------------------
+
+BUG FIXES
+
+    o scan_sequences() will now properly create a scoring matrix from motifs
+      with pseudocounts of 0.
+
+CHANGES IN VERSION 1.0.15
+-------------------------
+
+BUG FIXES
+
+    o view_motifs() will now give an informative error message when trying
+      to plot multiple motifs with non-unique names.
+
+CHANGES IN VERSION 1.0.14
+-------------------------
+
+BUG FIXES
+
+    o Fixed 'method' parameter documentation for motif_tree().
+
+CHANGES IN VERSION 1.0.13
+-------------------------
+
+BUG FIXES
+
+    o Fixed the error message given when a vector of incorrect length is
+      used in a function.
+
+CHANGES IN VERSION 1.0.12
+-------------------------
+
+BUG FIXES
+
+    o motif_pvalue() no longer throws an error for
+      motif_pvalue(..., pvalue = 0).
+
+    o motif_tree() now works properly with dist objects as input.
+
+CHANGES IN VERSION 1.0.11
+-------------------------
+
+BUG FIXES
+
+    o The compare_motifs() example for min.mean.ic in the Advanced Usage
+      vignette now makes more sense.
+
+CHANGES IN VERSION 1.0.10
+-------------------------
+
+BUG FIXES
+
+    o More strangely behaving MotifDb vignette code addressed in Advanced Usage
+      vignette.
+
+CHANGES IN VERSION 1.0.9
+------------------------
+
+BUG FIXES
+
+    o shuffle_motifs() now produces motifs of proper length.
+
+CHANGES IN VERSION 1.0.8
+------------------------
+
+BUG FIXES
+
+    o Trying to prevent R CMD BUILD from changing the behaviour of vignette
+      code involving MotifDb package.
+
+CHANGES IN VERSION 1.0.7
+------------------------
+
+BUG FIXES
+
+    o merge_motifs() will not show repeat families/organisms in new merged
+      motif.
+
+    o show method will no longer show name slot instead of altname.
+
+CHANGES IN VERSION 1.0.6
+------------------------
+
+BUG FIXES
+
+    o If MEME motif file has no strand info, assume `strand = "+"`, not
+      `strand = c("+", "-")`.
+
+CHANGES IN VERSION 1.0.5
+------------------------
+
+BUG FIXES
+
+    o `read_meme()` can now read non-DNA/RNA motifs.
+
+    o Removed duplicate line in run_meme.R.
+
+    o `scan_sequences()` will not scan mismatching motif/sequence alphabets.
+
+    o Verbose output from `scan_sequences()` will now display correctly.
+
+    o Using `enrich_motifs()` and not finding any motif hits in the input
+      sequences no longer throws an error.
+
+    o Fixed threshold calculation in `enrich_motifs()`.
+
+    o `enrich_motifs()` will now show results for motifs which have hits in
+      target sequences but none in bkg sequences.
+
+CHANGES IN VERSION 1.0.4
+------------------------
+
+BUG FIXES
+
+    o Can now use `view_motifs(..., tryRC=F)` without throwing an error.
+
+CHANGES IN VERSION 1.0.3
+------------------------
+
+BUG FIXES
+
+    o Missed a couple [Biostrings::*StringSet-class] from last patch.
+
+    o Updated README to reflect new installation method.
+
+    o Wrapped instances of \link{} with \code{\link{}}.
+
+CHANGES IN VERSION 1.0.2
+------------------------
+
+BUG FIXES
+
+    o `read_meme()` can now read meme result files with missing strand info.
+
+    o Use \link{*StringSet} instead of [Biostrings::*StringSet-class] in
+      documentation.
+
+    o No longer load MotifDb package in examples on Windows.
+
+CHANGES IN VERSION 1.0.1
+------------------------
+
+BUG FIXES
+
+    o TFBSTools motifs with multiple species can convert to universalmotif.
+
+    o `scan_sequences()`: will now ignore non-standard letters instead of
+      crashing.
+
+CHANGES IN VERSION 1.0.0
+------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Changed the appearance of some of the vignette code blocks.
+
+    o More documentation added in data.R.
+
+BUG FIXES
+
+    o Replaced for loop with `lapply()` in add_multifreq.R L120-133.
+
+    o Replaced for loop with `lapply()` in enrich_motifs.R L327-330.
+
+    o Replaced for loop with `lapply()` in shuffle_motifs.R L77-80.
+
+    o Using `diag()` instead of for loop in `fix_pcc_diag()`
+      (compare_motifs.R).
+
+    o Fixed `read_motifs()` not parsing alphabet correctly.
+
+    o Vignettes are now built using pdflatex instead of lualatex.
+
+CHANGES IN VERSION 0.99.0
+-------------------------
+
+    o Ready for bioconductor.
+
+CHANGES IN VERSION 0.98.0
+-------------------------
+
+    o Pre-bioconductor.

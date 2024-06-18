@@ -1,0 +1,63 @@
+Package: universalmotif
+Title: Import, Modify, and Export Motifs with R
+Version: 1.20.0
+Authors@R: c(
+      person(c("Benjamin", "Jean-Marie"), "Tremblay", role = c("aut", "cre"),
+        email = "benjamin.tremblay@uwaterloo.ca",
+        comment = c(ORCID = "0000-0002-7441-2951")),
+      person("Spencer", "Nystrom", role = "ctb",
+        comment = c(ORCID = "0000-0003-1000-1579"))
+    )
+URL: https://bioconductor.org/packages/universalmotif/
+BugReports: https://github.com/bjmt/universalmotif/issues
+Description: Allows for importing most common motif types into R for use by
+    functions provided by other Bioconductor motif-related packages. Motifs can
+    be exported into most major motif formats from various classes as defined
+    by other Bioconductor packages. A suite of motif and sequence manipulation
+    and analysis functions are included, including enrichment, comparison,
+    P-value calculation, shuffling, trimming, higher-order motifs, and others.
+Depends: R (>= 3.5.0)
+License: GPL-3
+Encoding: UTF-8
+Imports: methods, stats, utils, MASS, ggplot2, yaml, IRanges, Rcpp,
+        Biostrings, BiocGenerics, S4Vectors, rlang, grid,
+        MatrixGenerics
+Suggests: spelling, knitr, bookdown, TFBSTools, rmarkdown, MotifDb,
+        testthat, BiocParallel, seqLogo, motifStack, dplyr, ape,
+        ggtree, processx, ggseqlogo, cowplot, GenomicRanges, ggbio
+Enhances: PWMEnrich, rGADEM
+LinkingTo: Rcpp, RcppThread
+VignetteBuilder: knitr
+biocViews: MotifAnnotation, MotifDiscovery, DataImport, GeneRegulation
+RoxygenNote: 7.1.2
+Roxygen: list(markdown = TRUE, old_usage = TRUE)
+Language: en-GB
+Collate: 'RcppExports.R' 'add_multifreq.R' 'compare_motifs.R'
+        'universalmotif-class.R' 'convert_motifs.R' 'convert_type.R'
+        'create_motif.R' 'create_sequences.R' 'data.R'
+        'enrich_motifs.R' 'filter_motifs.R' 'get_bkg.R'
+        'make_DBscores.R' 'merge_motifs.R' 'merge_similar.R'
+        'motif_clusters.R' 'motif_finder.R' 'motif_peaks.R'
+        'motif_pvalue.R' 'motif_rc.R' 'motif_tree.R' 'read_cisbp.R'
+        'read_homer.R' 'read_jaspar.R' 'read_matrix.R' 'read_meme.R'
+        'read_motifs.R' 'read_transfac.R' 'read_uniprobe.R'
+        'run_meme.R' 'sample_sites.R' 'scan_sequences.R'
+        'sequence_complexity.R' 'shuffle_motifs.R'
+        'shuffle_sequences.R' 'switch_alph.R' 'trim_motifs.R'
+        'universalmotif-methods.R' 'universalmotif.R'
+        'universalmotif_df.R' 'utils-internal.R' 'utils-motif.R'
+        'utils-sequence.R' 'view_logo.R' 'view_motifs.R'
+        'write_homer.R' 'write_jaspar.R' 'write_matrix.R'
+        'write_meme.R' 'write_motifs.R' 'write_transfac.R' 'zzz.R'
+git_url: https://git.bioconductor.org/packages/universalmotif
+git_branch: RELEASE_3_18
+git_last_commit: ecd44a7
+git_last_commit_date: 2023-10-24
+Date/Publication: 2023-10-24
+NeedsCompilation: yes
+Packaged: 2023-10-24 23:29:58 UTC; biocbuild
+Author: Benjamin Jean-Marie Tremblay [aut, cre]
+    (<https://orcid.org/0000-0002-7441-2951>),
+  Spencer Nystrom [ctb] (<https://orcid.org/0000-0003-1000-1579>)
+Maintainer: Benjamin Jean-Marie Tremblay <benjamin.tremblay@uwaterloo.ca>
+Built: R 4.3.2; x86_64-conda-linux-gnu; 2023-12-21 09:04:41 UTC; unix

@@ -1,0 +1,77 @@
+CI                      Confidence interval of percentages
+PermTest                Permutation test for lm, lme and glm (binomial
+                        and Poisson) objects
+Segments                Draw line segments between pairs of points.
+TukeyHSDs               Simplify the list of a TukeyHSD object keeping
+                        the significant differences only.
+bbox2sf                 Convert a bounding box into a sf object.
+classnum                Gives an index vector of the class category of
+                        each value of a numerical vector
+cormat                  Gives a correlation matrix and the probability
+                        of Ho for each correlation
+correlog                Computes Moran's or Geary's coefficients on
+                        distance classes
+date2winter             Convert a POSIXt date into categories
+                        corresponding to a autumn/winter/spring
+                        sequence
+diag2edge               Computes the edge of a square from its diagonal
+difshannonbio           Empirical confidence interval of the bootstrap
+                        of the difference between two Shannon indices
+dirProj                 Computes new coordinates given bearings and
+                        distances.
+dirSeg                  Computes segment directions.
+distNNeigh              Computes distances to the nearest neighbour
+distNode                Computes the distances between each nodes of a
+                        polyline.
+distSeg                 Computes distances between the top coordinates
+                        of segments.
+distTot                 Computes the total length of a polyline.
+expandpoly              Homothetia (size expansion) of a polygon
+findR                   Computes the distance between the centroid and
+                        the most distant coordinate of a geographical
+                        coordinate set
+friedmanmc              Multiple comparisons after Friedman test
+kruskalmc               Multiple comparison test after Kruskal-Wallis
+ks.gof                  Kolmogorof-Smirnov goodness of fit test to
+                        normal distribution
+mergeTrackObs           Count the nearest observations to points
+                        corresponding to track intervals
+pairsrp                 Produces a matrix of scatterplot, regression
+                        coefficient and p(Ho)
+pave                    Provide square polygons or their node
+                        coordinates along a segment
+permcont                Random permutation of a contingency table n row
+                        x 2 columns
+piankabio               Computes the Pianka's index of niche overlap
+piankabioboot           Bootstrap Pianka's index
+polycirc                Computes the polygon coordinates of a circle
+polycirc2               Computes the polygon coordinates of a circle
+                        sector
+preybiom                Jackal and Genet diet in Algeria
+print.mc                print method for objects of class 'mc'
+selMod                  Model selection according to information
+                        theoretic methods
+shannon                 Computes Shannon's and equitability indices
+shannonbio              Computes Shannon's and equitability indices
+                        from a data frame of dietary analysis (n,
+                        biomass,...)
+shannonbioboot          Boostrap Shannon's and equitability indices
+siegelp179              Data on rats training
+st_thintrack            Thin a track just keeping the points separated
+                        by a user defined minimal distance
+tabcont2categ           Convert a contingency table (data.frame) into a
+                        presence/absence table of categories
+trans2pix               Convert a transect coordinate file with some
+                        waypoints separated by NA into a matrix with
+                        intermediate coordinates replacing NA.
+trans2seg               Convert a transect coordinate file into a
+                        matrix with segment coordinates.
+transLines2pix          Convert MULTILINESTRING and/or LINESTRING into
+                        POINT geometry with points at regular distance
+                        between nodes
+val4symb                Center a numerical vector on a parameter
+                        position and provides absolute values and
+                        colors according to negative and positive
+                        values
+write.delim             Write a data.frame
+writecn.delim           Write a data.frame that has Chinese characters

@@ -1,0 +1,2 @@
+CC=x86_64-conda-linux-gnu-cc
+CFLAGS=-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/hpc/chiayicheng/package/miniconda3/envs/R4.3.2forKmer/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/r-base-split_1698915151601/work=/usr/local/src/conda/r-base-4.3.2 -fdebug-prefix-map=/home/hpc/chiayicheng/package/miniconda3/envs/R4.3.2forKmer=/usr/local/src/conda-prefix

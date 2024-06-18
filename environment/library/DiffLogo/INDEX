@@ -1,0 +1,68 @@
+ASN                     ASN alphabet
+Alphabet                built alphabet
+DNA                     DNA alphabet
+FULL_ALPHABET           Complete character alphabet
+RNA                     RNA alphabet
+alignPwmSets            Multiple PWMs alignment
+baseDistributionPwm     Generates a PWM
+calculatePvalue         p-value that two PWM-positions are from the
+                        same distribution
+createDiffLogoObject    DiffLogo object
+diffLogo                Draw DiffLogo
+diffLogoFromPwm         Draw DiffLogo from PWM
+diffLogoTable           Draw DiffLogo-table
+diffLogoTableConfiguration
+                        Configuration object for diffLogoTable
+differenceOfICs         normalized information content differences
+drawDiffLogoTable       Draws a table of DiffLogos
+enrichDiffLogoObjectWithPvalues
+                        Enriches a difflogo object with p-values
+enrichDiffLogoTableWithPvalues
+                        Enriches a matrix of difflogo objects with
+                        p-values
+extendPwmsFromAlignmentVector
+                        Extend pwms with respect to alignment
+getAlphabetFromCharacters
+                        returns the alphabet which fits to the given
+                        characters
+getAlphabetFromSequences
+                        returns the alphabet which fits to the given
+                        sequences
+getPwmFromAlignment     Create PWM from alignment
+getPwmFromAlignmentFile
+                        generates a pwm from an alignment file
+getPwmFromFastaFile     generates a pwm from a FASTA file
+getPwmFromFile          generates a pwm from a file of different
+                        formats
+getPwmFromHomerFile     generates a pwm from a homer file
+getPwmFromPfmOrJasparFile
+                        generates a pwm from a jaspar file
+getPwmFromPwmFile       generates a pwm from a pwm file
+getSequencesFromAlignmentFile
+                        extracts the sequences from an alignment file
+getSequencesFromFastaFile
+                        extracts the sequences from a FASTA file
+informationContent      information content
+localPwmAlignment       Align pwms
+lossOfAbsICDifferences
+                        the change of information content
+multipleLocalPwmsAlignment
+                        Multiple PWMs alignment
+normalizePWM            normalizes the given pwm
+normalizedDifferenceOfProbabilities
+                        normalized probability differences
+prepareDiffLogoTable    Prepare a table of difflogo objects
+probabilities           probabilities
+pwmDivergence           PWM divergence
+pwmsDistanceMatrix      Multiple PWMs alignment
+reverseAlignmentVector
+                        Reverse for alignment vector
+seqLogo                 Draw sequence logo
+shannonDivergence       shannon divergence
+sumOfAbsICDifferences   sum of absolute information content differences
+sumOfAbsProbabilityDifferences
+                        sum of absolute probability differences
+sumProbabilities        sum of probabilities, i.e. 1.0
+switchDirection         Switches between 'forward' and 'reverse'
+twoSetsAveragePwmDivergenceFromAlignmentVector
+                        Average divergence between two sets.
