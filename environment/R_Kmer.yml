@@ -1,0 +1,7 @@
+name: R4.3.2forKmer
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - r-tidyr=1.3.0=r43ha503ecb_1
+prefix: /home/hpc/chiayicheng/package/miniconda3/envs/R4.3.2forKmer
