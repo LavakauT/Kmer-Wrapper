@@ -1,4 +1,4 @@
-# DOWNLAD Mus_musculus genome fasta and gff3 files
+# DOWNLOAD Mus_musculus genome fasta and gff3 files
 
 ## change your direction to your 'code_intergration' folder
 cd ~/code_intergration
