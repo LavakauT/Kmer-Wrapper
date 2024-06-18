@@ -7,7 +7,7 @@
 #SBATCH --time 03-00:00
 
 module load Miniconda3/4.9.2
-# or source your source [your own conda.sh(~/miniconda3/etc/profile.d/conda.sh)] **if you don't have one, please inatall miniconda**
+# or source your source file [your own conda.sh(~/miniconda3/etc/profile.d/conda.sh)] **if you don't have one, please inatall miniconda**
 
 start_time=$(date +%s)
 echo ">>>START RUNNING KMER<<<"
@@ -21,3 +21,6 @@ end_time=$(date +%s)
 elapsed_time=$((end_time - start_time))
 
 echo "RUNNING TIME:${elapsed_time}"
+
+# Note!!
+# If the program can't find kmer, please check whether feature names are the same between your database and gff_file
