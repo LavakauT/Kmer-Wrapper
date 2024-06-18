@@ -13,7 +13,7 @@ echo ">>>START RUNNING KMER<<<"
 
 source activate python_Kmer
 cd /RAID1/working/R425/lavakau/Kmer-Wrapper-main
-python 0_intergrated_codes_modified.py -main_dir /RAID1/working/R425/lavakau/Kmer-Wrapper-main -gff3_filename Mus_musculus.GRCm39.112.chr.gff3  -genome_filename Mus_musculus.GRCm39.dna.toplevel.fa  -TP_filename TP.txt -TN_filename TN.txt  -set_num 10 -group_name Mus
+python 0_intergrated_codes_modified.py -main_dir /RAID1/working/R425/lavakau/Kmer-Wrapper-main -gff3_filename Araport11_201606.Evolinc.gff3  -genome_filename TAIR10_Chr.all_cleaned.fasta  -TP_filename TPMeristem.txt -TN_filename TNMeristem.txt  -set_num 10 -group_name Meristem
 
 echo ">>>FINISHED KMER RUN<<<"
 end_time=$(date +%s)
