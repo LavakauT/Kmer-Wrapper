@@ -1,7 +1,8 @@
 # KmersDiscovery Wrapper
 
 A wrapper to identify k-mers and perform machine learning on the identified k-mers.
-> Note: The current version supports only one set of TP genes and one set of TN genes. A version that supports multiple sets simultaneously will be released soon.
+### Update:
+> 18 Jun 2024: The current version supports only one set of TP genes and one set of TN genes. A version that supports multiple sets simultaneously will be released soon.
 
 ## Authors
 - Wrapper developer: Mr. Pan Kai-Cheng (Dr. Cheng Chia-Yi)
