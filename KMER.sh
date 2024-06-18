@@ -7,6 +7,7 @@
 #SBATCH --time 03-00:00
 
 module load Miniconda3/4.9.2
+# or source your source [your own conda.sh(~/miniconda3/etc/profile.d/conda.sh)] **if you don't have one, please inatall miniconda**
 
 start_time=$(date +%s)
 echo ">>>START RUNNING KMER<<<"
