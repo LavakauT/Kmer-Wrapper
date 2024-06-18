@@ -32,16 +32,16 @@ A wrapper to identify k-mers and perform machine learning on the identified k-me
 ```
 
 *For "0_intergrated_codes_modified.py", there are eight arguments you have to declare:*
-   1. -main_dir, Your main folder path(default: code_intergration)
-   ==========================================================================
-   2. -gff3_filename, Your .gff3 file name(NOT PATH, only filename)
-   3. -genome_filename, Your genome file name(NOT PATH, only filename)
-   4. -TP_filename, Your TP data file name(NOT PATH)
-   5. -TN_filename, Your TN data file name(NOT PATH)
-   ==========================================================================
-   6. -set_num, How many test/train set you want to split (1~40)
-   7. -ML_method, ML Algorithm to run (RF, SVM, SVMpoly, SVMrbf, GB, LogReg)
-   ==========================================================================
-   8. -group_name, Your new create group folder name
+   1. *-main_dir*, Your main folder path(default: code_intergration)
+
+   2. *-gff3_filename*, Your .gff3 file name(NOT PATH, only filename)
+   3. *-genome_filename*, Your genome file name(NOT PATH, only filename)
+   4. *-TP_filename*, Your TP data file name(NOT PATH)
+   5. *-TN_filename*, Your TN data file name(NOT PATH)
+
+   6. *-set_num*, How many test/train set you want to split (1~40)
+   7. Deprecation, directly run in RF, SVM, and LogReg >>> *-ML_method*, ML Algorithm to run (RF, SVM, SVMpoly, SVMrbf, GB, LogReg)
+
+   8. *-group_name*, Your new create group folder name
    (The program will create a new folder with this name to store the output files, organizing them into a group. 
    This helps to ensure that outputs from different runs or different groups of data do not overlap.)
