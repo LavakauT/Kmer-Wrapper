@@ -26,15 +26,19 @@
 ```
    0. (put your .gff3 & genome file in ~/code_intergration/gffandgenome) AND (put your TP/TN data in ~/code_intergration/data/Kmer/TPTN)
    # You can follow README in gffandgenome folder to download Arabidopsis thaliana genome fasta and gff3 file for testing.
+   # Name must start with "TP_(subgroup)_(number)" or "TN_(subgroup)_(number)" (mutiple files are avaliable). 
+   # Which have same (subgroup)_(number) will be in the same subgroup; there's no interaction between different subgroups.
+
 
    1. change your direction to 'code_intergration' file (cd ~/code_intergration)
    2. source [your own conda.sh(~/miniconda3/etc/profile.d/conda.sh)]     **if you don't have one, please install miniconda**
    3. conda activate python_Kmer
-   4. python ~/code_intergration/0_intergrated_codes_modified.py -main_dir [YOUR MAIN FOLDER ABSOLUTE PATH] -gff3_filename [YOUR .GFF3 FILE NAME] -genome_filename [YOUR GENOME FILE NAME] -TP_filename [YOUR TP DATA FILE NAME] -TN_filename [YOUR TN DATA FILE NAME] -set_num [SETS OF TEST/TRAIN] -ML_method [ML_ALG] -group_name [YOUR GROUP FOLDER NAME]
-      (For more explanation of these arguments, please see the next part.)
+   4. python ~/code_intergration/Intergrated_pipeline_BATCH.py -main_dir [YOUR MAIN FOLDER ABSOLUTE PATH] -conda_dir [YOUR conda.sh file ABSOLUTE PATH] -gff3_filename [YOUR .GFF3 FILE NAME] -features [FEATURES FROM GFF]-genome_filename [YOUR GENOME FILE NAME] -set_num [SETS OF TEST/TRAIN] -group_name [YOUR GROUP FOLDER NAME]
+      Please only operate "Intergrated_pipeline_BATCH.py" but not "Intergrated_pipeline.py", even though you have only one set of TP/TN**
+      (Please see the next part for more explanation of these arguments.)
 ```
 
-*For "0_intergrated_codes_modified.py", there are eight arguments you have to declare:*
+*For "0_intergrated_codes.py", there are eight arguments you have to declare:*
    - *-main_dir*, Your main folder path(usually: ~/code_intergration)
    - *-conda_dir*, Your conda.sh path(usually: ~/miniconda3/etc/profile.d/conda.sh)
    - *-gff3_filename*, Your .gff3 file name(NOT PATH, only filename)
