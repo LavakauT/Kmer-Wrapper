@@ -52,3 +52,6 @@
    
    (The program will create a new folder with this name to store the output files, organizing them into a group. 
    This helps to ensure that outputs from different runs or different groups of data do not overlap.)
+
+### HPC bash script
+>Once you finish all the required settings, you can submit KMER.sh as a testing run with Sample Data (TP_Meristem_1 & TN_Meristem_1) and Sample Genome (TAIR10_Chr.all_cleaned.fasta & Araport11_201606.Evolinc.gff3) in your HPC system.
