@@ -1,6 +1,6 @@
 # KmersDiscovery Wrapper
 ### A wrapper to identify k-mers and perform machine learning on the identified k-mers.
-<img src="https://github.com/LavakauT/Kmer-Wrapper/assets/132649549/9bb29229-36a4-4698-8050-837487a63682" width="80%"> 
+><img src="https://github.com/LavakauT/Kmer-Wrapper/assets/132649549/9bb29229-36a4-4698-8050-837487a63682" width="80%"> 
 
 ### Update:
 > 19 Jun 2024: The version that supports multiple sets simultaneously has been released.
