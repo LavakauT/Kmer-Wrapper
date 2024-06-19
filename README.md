@@ -1,5 +1,5 @@
 # KmersDiscovery Wrapper
-[KMER.pdf](https://github.com/user-attachments/files/15895711/KMER.pdf)
+
 
 
 A wrapper to identify k-mers and perform machine learning on the identified k-mers.
