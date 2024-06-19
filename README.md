@@ -1,6 +1,6 @@
 # KmersDiscovery Wrapper
 ### A wrapper to identify k-mers and perform machine learning on the identified k-mers.
-<img src="https://github.com/LavakauT/Kmer-Wrapper/assets/132649549/9bb29229-36a4-4698-8050-837487a63682" width="75%"> 
+<img src="https://github.com/LavakauT/Kmer-Wrapper/assets/132649549/9bb29229-36a4-4698-8050-837487a63682" width="80%"> 
 
 ### Update:
 > 19 Jun 2024: The version that supports multiple sets simultaneously has been released.
@@ -60,4 +60,4 @@
 ### Web Tool: PREDICT
 >Try our web tool [PREDICT](https://predict.southerngenomics.org/kmers/kmers.php) for rapid k-mer identification and TFBM association.
 >
-><img src="https://github.com/LavakauT/Kmer-Wrapper/assets/132649549/b731ec02-d6b1-4853-8c29-811d4c190dff" width="50%">
+><img src="https://github.com/LavakauT/Kmer-Wrapper/assets/132649549/b731ec02-d6b1-4853-8c29-811d4c190dff" width="60%">
