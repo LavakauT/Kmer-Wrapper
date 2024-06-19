@@ -3,6 +3,7 @@ A wrapper to identify k-mers and perform machine learning on the identified k-me
 ![KMER](https://github.com/LavakauT/Kmer-Wrapper/assets/132649549/9bb29229-36a4-4698-8050-837487a63682)
 ### Update:
 > 19 Jun 2024: The version that supports multiple sets simultaneously has been released.
+> 
 > 18 Jun 2024: The current version supports only one set of TP genes and one set of TN genes. A version that supports multiple sets simultaneously will be released soon.
 
 ## Authors
